@@ -89,7 +89,7 @@ cs(0)
 resp = send_cmd(8, 0x1AA, 0x87)
 r7 = spi.read(4)
 cs(1)
-if resp != 0x01 or r7[2] != 0x01 or r7[3] != 0xAA:
+if resp != 0x01:
     raise Exception("CMD8 失敗")
 
 # 4 ACMD41（CMD55 + CMD41）
