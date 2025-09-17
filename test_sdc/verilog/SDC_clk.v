@@ -1,4 +1,4 @@
-module SPI_clk(
+module SDC_clk(
     input       i_rst,
     input       i_clk_27_MHz,
     output      o_clk_100_KHz

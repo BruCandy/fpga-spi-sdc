@@ -1,4 +1,4 @@
-module SPI_dummy(
+module SDC_dummy(
     input wire        i_rst,
     input wire        i_clk,
     input wire        i_we,
@@ -20,7 +20,10 @@ module SPI_dummy(
 
 
     assign o_mosi   = 1'b1;
-    assign o_cs     = 1'b1;
+    assign o_cs     = (r_state == 0) ? 1'b1 :
+                      (r_state == 1) ? 1'b1 : 
+                      (r_state == 2) ? 1'b1 :
+                      (r_state == 3) ? 1'b1 : 1'b0;
     assign o_done   = r_done;
     assign o_sck_state = r_sck_state;
 
@@ -65,8 +68,15 @@ module SPI_dummy(
                     end
                 end
                 4: begin
-                    r_done <= 1;
+                    // r_done <= 1;
+                    r_state <= 5;
+                end
+                5: begin 
+                    r_state <= 6;
+                end
+                6: begin
                     r_state <= 0;
+                    r_done <= 1;
                 end
             endcase
         end

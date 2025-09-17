@@ -1,11 +1,10 @@
 module SPI_top_tb();
     reg i_clk = 1'b1;
     reg i_rst = 0;
-    wire o_mosi;
     wire i_miso;
+    wire o_mosi;
     wire o_cs;
     wire o_clk;
-    wire o_led;
 
 
     initial begin
@@ -13,15 +12,14 @@ module SPI_top_tb();
         $dumpvars(0, SPI_top_tb);
     end
 
-    SPI_top # () 
-    spi_top (
+    SDC_top # () 
+    sdc_top (
         .i_clk  (i_clk  ),
         .i_rst  (i_rst  ),
         .i_miso (i_miso ),
         .o_mosi (o_mosi ),
         .o_cs   (o_cs   ),
-        .o_clk  (o_clk  ),
-        .o_led  (o_led  )
+        .o_clk  (o_clk  )
     );
 
     always #10 begin

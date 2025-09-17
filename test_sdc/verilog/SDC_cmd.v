@@ -1,15 +1,13 @@
-module SPI_cmd_sdc(
+module SDC_cmd(
     input wire        i_rst,
     input wire        i_clk,
     input wire [7:0]  i_cmd,
     input wire [31:0] i_arg,
     input wire [7:0]  i_crc,
     input wire        i_we,
-    input wire        i_miso,
     output wire       o_mosi,
     output wire       o_cs,
     output wire       o_done,
-    output wire [7:0] o_res,
     output wire       o_sck_state
 );
 
@@ -31,7 +29,6 @@ module SPI_cmd_sdc(
     assign o_mosi       = r_data[47];
     assign o_cs         = r_cs;
     assign o_done       = r_done;
-    assign o_res        = r_res;
     assign o_sck_state  = r_sck_state;
 
 
